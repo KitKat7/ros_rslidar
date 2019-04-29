@@ -1,0 +1,19 @@
+<launch>
+  <arg name="bag_path" default="/home/hyye/Desktop/rs32_imu_2019-04-26-11-31-52.bag" />
+  <arg name="model" default="RS32" />
+  <arg name="device_ip" default="192.168.1.200" />
+  <arg name="msop_port" default="6699" />
+  <arg name="difop_port" default="7788" />
+  <arg name="lidar_param_path" default="$(find rslidar_pointcloud)/data/rs_lidar_32/"/>
+
+  <node  name="cloud_bag" pkg="rslidar_pointcloud" type="cloud_bag" output="screen" >
+    <param name="model" value="$(arg model)"/>
+    <param name="curves_path" value="$(arg lidar_param_path)/curves.csv" />
+    <param name="angle_path" value="$(arg lidar_param_path)/angle.csv" />
+    <param name="channel_path" value="$(arg lidar_param_path)/ChannelNum.csv" />
+    <param name="curves_rate_path" value="$(arg lidar_param_path)/CurveRate.csv" />
+    <param name="intensity_mode" value="1" />
+    <param name="bag_path" value="$(arg bag_path)"/>
+  </node>
+
+</launch>
